@@ -1,0 +1,104 @@
+.service-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  /* Карточка услуги */
+  .card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--card-bg-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  .card-title {
+    font-weight: 600;
+    color: var(--heading-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+  }
+  
+  .card-title i {
+    font-size: 1.2em;
+  }
+  
+  /* Изображения услуги */
+  .service-images {
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+  
+  .service-images img {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--border-color) !important;
+  }
+  
+  .service-images img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Список похожих услуг */
+  .list-group-item {
+    background-color: var(--card-bg-color);
+    border-color: var(--border-color);
+    padding: 1rem 1.5rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .list-group-item:hover {
+    background-color: var(--hover-bg-color);
+  }
+  
+  .list-group-item a {
+    color: var(--text-color);
+    transition: color 0.2s ease;
+  }
+  
+  .list-group-item:hover a {
+    color: var(--primary-color);
+  }
+  
+  .list-group-item i {
+    transition: transform 0.2s ease;
+  }
+  
+  .list-group-item:hover i {
+    transform: translateX(3px);
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 992px) {
+    .service-page {
+      padding-bottom: 2rem;
+    }
+    
+    .col-lg-8 {
+      margin-bottom: 2rem;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .card-body {
+      padding: 1.25rem;
+    }
+    
+    .service-images img {
+      max-width: 120px !important;
+    }
+  }

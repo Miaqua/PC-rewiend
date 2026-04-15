@@ -1,0 +1,196 @@
+/* Общие стили для контейнеров секций */
+.section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+/* Заголовки секций */
+.section h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Кнопки внутри секций */
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff; /* синий */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* темнее при наведении */
+}
+
+/* Таблицы внутри секций */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Обертка для таблиц */
+.table-wrapper {
+  overflow-x: auto; /* чтобы таблица не ломалась на маленьких экранах */
+}
+
+:root {
+  --bg-section: #ffffff;
+  --text-color: #333;
+  --card-bg: #f8f9fa;
+  --card-border: #e0e0e0;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --hover-row: #f1f1f1;
+  --btn-bg: #007bff;
+  --btn-hover-bg: #0056b3;
+  --table-header-bg: #f8f9fa;
+  --background: #f0f2f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-section: #1e1e1e;
+    --text-color: #f0f0f0;
+    --card-bg: #2a2a2a;
+    --card-border: #444;
+    --card-shadow: rgba(255, 255, 255, 0.05);
+    --hover-row: #333;
+    --btn-bg: #0d6efd;
+    --btn-hover-bg: #0a58ca;
+    --table-header-bg: #2d2d2d;
+    --background: #121212;
+  }
+}
+
+/* Секции */
+.section {
+  background-color: var(--bg-section);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  padding: 20px;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* Заголовки */
+.section h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+/* Кнопки */
+.btn {
+  padding: 10px 20px;
+  background-color: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+/* Таблицы */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-color);
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+th {
+  background-color: var(--table-header-bg);
+}
+
+tr:hover {
+  background-color: var(--hover-row);
+}
+
+/* Обёртка таблиц */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Счётчики */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  flex: 1 1 150px;
+  background-color: var(--card-bg);
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px var(--card-border);
+  color: var(--text-color);
+}
+
+.stat-box span {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+* Обновляем фон всего приложения */
+body {
+  background-color: var(--background);
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
+
+/* Обновляем стандартные кнопки Bootstrap */
+.btn {
+  background-color: var(--btn-bg);
+  color: #fff;
+  border: none;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover-bg);
+  color: #fff;
+}
+
+/* Перекрываем Bootstrap кнопки, если они есть */
+.btn-primary {
+  background-color: var(--btn-bg) !important;
+  border-color: var(--btn-bg) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-hover-bg) !important;
+  border-color: var(--btn-hover-bg) !important;
+  color: #fff !important;
+}

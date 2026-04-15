@@ -1,0 +1,48 @@
+.serviceCard {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.1);
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.darkMode .serviceCard {
+  background-color: var(--dark-card);
+  color: var(--dark-text);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(139, 92, 246, 0.2);
+}
+
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(192, 132, 252, 0.1) 100%);
+  color: var(--primary-600);
+}
+
+.darkMode .iconBox {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary-300);
+}
+
+.sectionTitle {
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+  border-radius: 3px;
+}

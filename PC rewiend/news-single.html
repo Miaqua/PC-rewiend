@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Открытие нового сервисного центра | Новости TechService</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-100: #f3e8ff;
+            --primary-200: #d8b4fe;
+            --primary-300: #c084fc;
+            --primary-400: #a855f7;
+            --primary-500: #8b5cf6;
+            --primary-600: #7c3aed;
+            --primary-700: #6d28d9;
+            --primary-800: #5b21b6;
+            --primary-900: #4c1d95;
+            
+            --gradient-from: #8b5cf6;
+            --gradient-to: #c084fc;
+            
+            --dark-bg: #1e1b2e;
+            --dark-card: #2a2540;
+            --dark-text: #e0e0e0;
+            --dark-border: #3a3a5a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* Градиентные элементы */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Навигация */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-500) 100%);
+            box-shadow: 0 4px 20px rgba(106, 17, 203, 0.3);
+        }
+
+        /* Герой секция */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-400) 100%);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+
+        /* Контент новости */
+        .news-article {
+            background-color: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .news-article {
+            background-color: var(--dark-card);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .news-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--primary-100);
+            color: var(--primary-700);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 1rem;
+        }
+
+        .dark-mode .news-category {
+            background-color: var(--primary-900);
+            color: var(--primary-200);
+        }
+
+        .news-date {
+            font-size: 0.9rem;
+            color: var(--primary-500);
+        }
+
+        .dark-mode .news-date {
+            color: var(--primary-300);
+        }
+
+        .news-image {
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .news-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .news-content h2, 
+        .news-content h3, 
+        .news-content h4 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .news-content ul,
+        .news-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .news-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Блок автора */
+        .author-card {
+            display: flex;
+            background-color: var(--primary-100);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .dark-mode .author-card {
+            background-color: var(--primary-900);
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1.5rem;
+        }
+
+        .author-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-bio {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+
+        .dark-mode .author-bio {
+            color: #a0a0a0;
+        }
+
+        /* Социальные кнопки */
+        .social-share {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-share a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-share a:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-share .vk {
+            background-color: #4a76a8;
+        }
+
+        .social-share .telegram {
+            background-color: #0088cc;
+        }
+
+        .social-share .twitter {
+            background-color: #1da1f2;
+        }
+
+        .social-share .facebook {
+            background-color: #3b5998;
+        }
+
+        /* Боковая панель */
+        .sidebar-widget {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .sidebar-widget {
+            background-color: var(--dark-card);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .widget-title {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+            border-radius: 3px;
+        }
+
+        /* Популярные новости */
+        .popular-news-item {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dark-mode .popular-news-item {
+            border-bottom-color: var(--dark-border);
+        }
+
+        .popular-news-img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .popular-news-title {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .popular-news-date {
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+
+        .dark-mode .popular-news-date {
+            color: #a0a0a0;
+        }
+
+        /* Теги */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--primary-100);
+            color: var(--primary-700);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .dark-mode .tag {
+            background-color: var(--primary-900);
+            color: var(--primary-200);
+        }
+
+        .tag:hover {
+            background-color: var(--primary-200);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .dark-mode .tag:hover {
+            background-color: var(--primary-700);
+        }
+
+        /* Хлебные крошки */
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .dark-mode .breadcrumb-item.active {
+            color: var(--dark-text);
+        }
+
+        /* Кнопки */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Переключатель темы */
+        .theme-switcher {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .theme-switcher:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .dark-mode .theme-switcher {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--dark-text);
+        }
+
+        .theme-switcher i {
+            margin-right: 0.5rem;
+        }
+
+        /* Комментарии */
+        .comments-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .comments-section {
+            background-color: var(--dark-card);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .comment {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dark-mode .comment {
+            border-bottom-color: var(--dark-border);
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .comment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .dark-mode .comment-date {
+            color: #a0a0a0;
+        }
+
+        .comment-reply {
+            margin-left: 3rem;
+            margin-top: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--primary-200);
+        }
+
+        .dark-mode .comment-reply {
+            border-left-color: var(--primary-700);
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-laptop-code me-2"></i>TechService
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="news.html">Новости</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reviews.html">Отзывы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth.html">
+                            <i class="fas fa-sign-in-alt me-1"></i>Вход
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            <i class="fas fa-user-plus me-1"></i>Регистрация
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="account.html">
+                            <i class="fas fa-user-circle me-1"></i>Личный кабинет
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <span class="theme-switcher" id="themeSwitcher">
+                            <i class="fas fa-moon"></i>
+                            <span>Темная тема</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Хлебные крошки -->
+    <section class="py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="news.html">Новости</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Открытие нового сервисного центра</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Основная статья -->
+                <div class="col-lg-8">
+                    <article class="news-article">
+                        <div class="news-meta">
+                            <span class="news-category">Компания</span>
+                            <span class="news-date"><i class="far fa-calendar-alt me-1"></i> 15 мая 2023</span>
+                        </div>
+                        
+                        <h1 class="mb-4">Открытие нового сервисного центра в центре города</h1>
+                        
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/1200x800/8b5cf6/ffffff?text=Новый+сервисный+центр" alt="Новый сервисный центр TechService" class="img-fluid">
+                        </div>
+                        
+                        <div class="news-content">
+                            <p class="lead">Мы рады сообщить об открытии нового сервисного центра TechService в самом центре города по адресу ул. Центральная, 42. Это уже третий наш центр в городе, и он оснащен самым современным оборудованием.</p>
+                            
+                            <h2>Новые возможности для клиентов</h2>
+                            <p>Новый сервисный центр предлагает расширенный спектр услуг по ремонту и обслуживанию техники:</p>
+                            <ul>
+                                <li>Ремонт компьютеров и ноутбуков любой сложности</li>
+                                <li>Восстановление данных с поврежденных носителей</li>
+                                <li>Диагностика и ремонт мобильных устройств</li>
+                                <li>Настройка и обслуживание сетевого оборудования</li>
+                                <li>Удаление вирусов и защита от киберугроз</li>
+                            </ul>
+                            
+                            <div class="row my-4">
+                                <div class="col-md-6">
+                                    <img src="https://via.placeholder.com/600x400/a855f7/ffffff?text=Ремонтная+зона" alt="Ремонтная зона" class="img-fluid rounded">
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="https://via.placeholder.com/600x400/7e22ce/ffffff?text=Зона+ожидания" alt="Зона ожидания" class="img-fluid rounded">
+                                </div>
+                            </div>
+                            
+                            <h2>Специальные условия открытия</h2>
+                            <p>В честь открытия нового центра мы подготовили для наших клиентов специальные предложения:</p>
+                            <ol>
+                                <li>Бесплатная диагностика при любом ремонте</li>
+                                <li>Скидка 15% на все услуги при записи через сайт</li>
+                                <li>Бесплатная чистка ноутбука от пыли при комплексном обслуживании</li>
+                                <li>Гарантия на все виды работ увеличена до 1 года</li>
+                            </ol>
+                            
+                            <h2>Режим работы и контакты</h2>
+                            <p>Новый сервисный центр работает без выходных с 9:00 до 21:00. Вы можете записаться на прием:</p>
+                            <ul>
+                                <li>По телефону: <strong>+7 (123) 456-78-90</strong></li>
+                                <li>Через форму на нашем сайте</li>
+                                <li>Лично по адресу: ул. Центральная, 42</li>
+                            </ul>
+                            
+                            <div class="author-card">
+                                <img src="https://via.placeholder.com/150/8b5cf6/ffffff?text=АВ" alt="Алексей Васильев" class="author-avatar">
+                                <div>
+                                    <h3 class="author-name">Алексей Васильев</h3>
+                                    <p class="author-bio">Технический директор TechService. Специалист по ремонту и обслуживанию компьютерной техники с 10-летним опытом.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="social-share">
+                                <a href="#" class="vk"><i class="fab fa-vk"></i></a>
+                                <a href="#" class="telegram"><i class="fab fa-telegram"></i></a>
+                                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Комментарии -->
+                    <div class="comments-section">
+                        <h2 class="mb-4">Комментарии (3)</h2>
+                        
+                        <div class="comment">
+                            <div class="comment-header">
+                                <img src="https://via.placeholder.com/150/8b5cf6/ffffff?text=ИИ" alt="Иван Иванов" class="comment-avatar">
+                                <div>
+                                    <h3 class="comment-author">Иван Иванов</h3>
+                                    <span class="comment-date">16 мая 2023 в 14:30</span>
+                                </div>
+                            </div>
+                            <div class="comment-body">
+                                <p>Отличная новость! Удобное расположение, буду обращаться. Как долго будут действовать скидки на услуги?</p>
+                            </div>
+                            
+                            <div class="comment-reply">
+                                <div class="comment-header">
+                                    <img src="https://via.placeholder.com/150/a855f7/ffffff?text=АВ" alt="Алексей Васильев" class="comment-avatar">
+                                    <div>
+                                        <h3 class="comment-author">Алексей Васильев</h3>
+                                        <span class="comment-date">16 мая 2023 в 15:45</span>
+                                    </div>
+                                </div>
+                                <div class="comment-body">
+                                    <p>Иван, спасибо за вопрос! Скидки будут действовать до конца месяца.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-header">
+                                <img src="https://via.placeholder.com/150/7e22ce/ffffff?text=ЕП" alt="Елена Петрова" class="comment-avatar">
+                                <div>
+                                    <h3 class="comment-author">Елена Петрова</h3>
+                                    <span class="comment-date">17 мая 2023 в 09:15</span>
+                                </div>
+                            </div>
+                            <div class="comment-body">
+                                <p>Была в новом центре вчера, очень понравилось! Современный ремонт, приятная зона ожидания с кофе. Мастер быстро починил мой ноутбук.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comment">
+                            <div class="comment-header">
+                                <img src="https://via.placeholder.com/150/6d28d9/ffffff?text=ДС" alt="Дмитрий Сидоров" class="comment-avatar">
+                                <div>
+                                    <h3 class="comment-author">Дмитрий Сидоров</h3>
+                                    <span class="comment-date">18 мая 2023 в 11:20</span>
+                                </div>
+                            </div>
+                            <div class="comment-body">
+                                <p>А есть ли парковка у нового центра? И как долго обычно занимает диагностика?</p>
+                            </div>
+                        </div>
+                        
+                        <form class="mt-5">
+                            <h3 class="mb-3">Оставить комментарий</h3>
+                            <div class="mb-3">
+                                <label for="commentName" class="form-label">Ваше имя</label>
+                                <input type="text" class="form-control" id="commentName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="commentEmail" class="form-label">Email (не будет опубликован)</label>
+                                <input type="email" class="form-control" id="commentEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="commentText" class="form-label">Комментарий</label>
+                                <textarea class="form-control" id="commentText" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Отправить комментарий</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Боковая панель -->
+                <div class="col-lg-4">
+                    <!-- Поиск -->
+                    <div class="sidebar-widget mb-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Поиск новостей...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Категории -->
+                    <div class="sidebar-widget mb-4">
+                        <h3 class="widget-title">Категории</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0">
+                                <a href="#" class="text-decoration-none">Компания</a>
+                                <span class="badge bg-primary rounded-pill">8</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0">
+                                <a href="#" class="text-decoration-none">Технологии</a>
+                                <span class="badge bg-primary rounded-pill">12</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0">
+                                <a href="#" class="text-decoration-none">Акции</a>
+                                <span class="badge bg-primary rounded-pill">5</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0">
+                                <a href="#" class="text-decoration-none">Советы</a>
+                                <span class="badge bg-primary rounded-pill">7</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Популярные новости -->
+                    <div class="sidebar-widget mb-4">
+                        <h3 class="widget-title">Популярные новости</h3>
+                        <div class="popular-news-item">
+                            <img src="https://via.placeholder.com/100x75/a855f7/ffffff?text=Популярная+1" class="popular-news-img" alt="Популярная новость 1">
+                            <div>
+                                <h4 class="popular-news-title"><a href="news-single.html" class="text-decoration-none">Новые технологии в ремонте ноутбуков</a></h4>
+                                <div class="popular-news-date">10 мая 2023</div>
+                            </div>
+                        </div>
+                        <div class="popular-news-item">
+                            <img src="https://via.placeholder.com/100x75/7e22ce/ffffff?text=Популярная+2" class="popular-news-img" alt="Популярная новость 2">
+                            <div>
+                                <h4 class="popular-news-title"><a href="news-single.html" class="text-decoration-none">Специальное предложение на чистку ноутбуков</a></h4>
+                                <div class="popular-news-date">5 мая 2023</div>
+                            </div>
+                        </div>
+                        <div class="popular-news-item">
+                            <img src="https://via.placeholder.com/100x75/6d28d9/ffffff?text=Популярная+3" class="popular-news-img" alt="Популярная новость 3">
+                            <div>
+                                <h4 class="popular-news-title"><a href="news-single.html" class="text-decoration-none">Как продлить жизнь вашему компьютеру</a></h4>
+                                <div class="popular-news-date">28 апреля 2023</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Теги -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Теги</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag">Ремонт</a>
+                            <a href="#" class="tag">Ноутбуки</a>
+                            <a href="#" class="tag">Компьютеры</a>
+                            <a href="#" class="tag">Акция</a>
+                            <a href="#" class="tag">Советы</a>
+                            <a href="#" class="tag">Технологии</a>
+                            <a href="#" class="tag">Данные</a>
+                            <a href="#" class="tag">Вирусы</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="py-4 mt-5" style="background-color: var(--primary-900); color: white;">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 TechService. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Переключение темы
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeSwitcher = document.getElementById('themeSwitcher');
+            const html = document.documentElement;
+            
+            // Проверяем сохраненную тему
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-bs-theme', savedTheme);
+            
+            if (savedTheme === 'dark') {
+                themeSwitcher.innerHTML = '<i class="fas fa-sun"></i><span>Светлая тема</span>';
+                document.body.classList.add('dark-mode');
+            }
+            
+            // Обработчик переключения
+            themeSwitcher.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                html.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                if (newTheme === 'dark') {
+                    this.innerHTML = '<i class="fas fa-sun"></i><span>Светлая тема</span>';
+                    document.body.classList.add('dark-mode');
+                } else {
+                    this.innerHTML = '<i class="fas fa-moon"></i><span>Темная тема</span>';
+                    document.body.classList.remove('dark-mode');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

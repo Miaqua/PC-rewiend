@@ -1,0 +1,80 @@
+:root {
+  --primary-100: #f3e8ff;
+  --primary-200: #d8b4fe;
+  --primary-300: #c084fc;
+  --primary-400: #a855f7;
+  --primary-500: #8b5cf6;
+  --primary-600: #7c3aed;
+  --primary-700: #6d28d9;
+  --primary-800: #5b21b6;
+  --primary-900: #4c1d95;
+  
+  --gradient-from: #8b5cf6;
+  --gradient-to: #c084fc;
+  
+  --dark-bg: #1e1b2e;
+  --dark-card: #2a2540;
+  --dark-text: #e0e0e0;
+  --dark-border: #3a3a5a;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-mode .bg-light {
+  background-color: var(--dark-card) !important;
+}
+
+.dark-mode .text-muted {
+  color: #b0b0b0 !important;
+}
+
+/* Градиентные элементы */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Кнопки */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* Формы */
+.form-control, .form-select {
+  border-radius: 8px;
+  padding: 10px 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.dark-mode .form-control, 
+.dark-mode .form-select {
+  background-color: #2a2a4a;
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+}

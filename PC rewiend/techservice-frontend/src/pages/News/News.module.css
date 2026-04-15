@@ -1,0 +1,144 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+}
+
+.filterSection button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #000000;
+}
+
+
+.filterSection select,
+.filterSection input {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.filterSection input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filterSection button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filterSection button:hover {
+  opacity: 0.9;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px; 
+  padding-top: 30px; 
+  border-top: 1px solid var(--border-color); 
+}
+
+.newsCard {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: var(--card-bg-color);
+}
+
+.newsCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.newsImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.newsCard h3 {
+  margin: 15px 15px 10px;
+  font-size: 1.2rem;
+  color: var(--heading-color);
+}
+
+.newsCard p {
+  margin: 0 15px 15px;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.newsCard small {
+  display: block;
+  margin: 0 15px 15px;
+  color: var(--muted-color);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .filterSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filterSection select,
+  .filterSection input,
+  .filterSection button {
+    width: 100%;
+  }
+  
+  .newsGrid {
+    margin-top: 30px;
+    padding-top: 20px;
+    gap: 20px;
+  }
+}
+
+.filterSection button {
+  color: #000000; 
+}
+
+
+.darkMode .filterSection button {
+  color: #ffffff !important; 
+  border-color: rgba(255, 255, 255, 0.2); 
+}
+
+
+.filterSection button:hover {
+  background-color: #f5f5f5;
+}
+
+
+.filterSection button:hover {
+  background-color: #f5f5f5;
+}
+
+
+.darkMode .filterSection button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}

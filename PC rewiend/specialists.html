@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechService - Наши специалисты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Копируем все стили из index.html */
+        :root {
+            --primary-100: #f3e8ff;
+            --primary-200: #d8b4fe;
+            --primary-300: #c084fc;
+            --primary-400: #a855f7;
+            --primary-500: #8b5cf6;
+            --primary-600: #7c3aed;
+            --primary-700: #6d28d9;
+            --primary-800: #5b21b6;
+            --primary-900: #4c1d95;
+            
+            --gradient-from: #8b5cf6;
+            --gradient-to: #c084fc;
+            
+            --dark-bg: #1e1b2e;
+            --dark-card: #2a2540;
+            --dark-text: #e0e0e0;
+            --dark-border: #3a3a5a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .bg-light {
+            background-color: var(--dark-card) !important;
+        }
+
+        .dark-mode .text-muted {
+            color: #b0b0b0 !important;
+        }
+
+        /* Градиентные элементы */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Навигация */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-500) 100%);
+            box-shadow: 0 4px 20px rgba(106, 17, 203, 0.3);
+        }
+
+        /* Карточки */
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.1);
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .dark-mode .card {
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(139, 92, 246, 0.2);
+        }
+
+        /* Кнопки */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Иконки */
+        .icon-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(192, 132, 252, 0.1) 100%);
+            color: var(--primary-600);
+        }
+
+        .dark-mode .icon-box {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary-300);
+        }
+
+        /* Переключатель темы */
+        .theme-switcher {
+            cursor: pointer;
+            padding: 5px 15px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .theme-switcher:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .dark-mode .theme-switcher {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--dark-text);
+        }
+
+        /* Герой секция */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-400) 100%);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+
+        /* Анимации */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Секции */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+            border-radius: 3px;
+        }
+
+        /* Формы */
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .dark-mode .form-control, 
+        .dark-mode .form-select {
+            background-color: #2a2a4a;
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--primary-900);
+            color: white;
+        }
+
+        .dark-mode footer {
+            background-color: #0f0c29;
+        }
+
+        /* Стили для специалистов */
+        .specialist-card {
+            transition: all 0.3s ease;
+        }
+
+        .specialist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .specialist-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--primary-200);
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .skill-badge {
+            background-color: var(--primary-100);
+            color: var(--primary-800);
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .dark-mode .skill-badge {
+            background-color: var(--primary-900);
+            color: var(--primary-200);
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-laptop-code me-2"></i>TechService
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">Новости</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="otz.html">Отзывы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">Админ-панель</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="specialists.html">
+                            <i class="fas fa-users me-1"></i>Специалисты
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth.html">
+                            <i class="fas fa-sign-in-alt me-1"></i>Вход
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            <i class="fas fa-user-plus me-1"></i>Регистрация
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="account.html">
+                            <i class="fas fa-user-circle me-1"></i>Личный кабинет
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <span class="theme-switcher" id="themeSwitcher">
+                            <i class="fas fa-moon me-1"></i>Темная тема
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой секция -->
+    <section class="hero-section">
+        <div class="container text-center position-relative">
+            <h1 class="display-4 fw-bold mb-4">Наши специалисты</h1>
+            <p class="lead mb-5">Профессиональные мастера с многолетним опытом работы в сфере ремонта компьютерной техники</p>
+        </div>
+    </section>
+
+    <!-- Специалисты -->
+    <section id="specialists" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold section-title gradient-text">Команда профессионалов</h2>
+                <p class="lead text-muted">Наши специалисты помогут решить любую проблему с вашей техникой</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Специалист 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card specialist-card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Алексей Петров" class="rounded-circle specialist-img mb-3">
+                            <h4 class="gradient-text">Алексей Петров</h4>
+                            <h6 class="text-muted mb-3">Старший мастер по ремонту ПК</h6>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-2">4.7</span>
+                            </div>
+                            <p class="mb-4">Опыт работы: 12 лет. Специализируется на сложных аппаратных неисправностях и модернизации систем.</p>
+                            <div class="skills mb-4">
+                                <span class="skill-badge">Ремонт материнских плат</span>
+                                <span class="skill-badge">Замена чипов</span>
+                                <span class="skill-badge">Диагностика</span>
+                                <span class="skill-badge">Апгрейд систем</span>
+                            </div>
+                            <a href="#quick-order" class="btn btn-primary btn-sm">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Специалист 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card specialist-card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Елена Смирнова" class="rounded-circle specialist-img mb-3">
+                            <h4 class="gradient-text">Елена Смирнова</h4>
+                            <h6 class="text-muted mb-3">Эксперт по ноутбукам</h6>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-2">5.0</span>
+                            </div>
+                            <p class="mb-4">Опыт работы: 8 лет. Специалист по ремонту ноутбуков всех марок, включая замену матриц и клавиатур.</p>
+                            <div class="skills mb-4">
+                                <span class="skill-badge">Ремонт ноутбуков</span>
+                                <span class="skill-badge">Замена матриц</span>
+                                <span class="skill-badge">Чистка от пыли</span>
+                                <span class="skill-badge">Ремонт BGA</span>
+                            </div>
+                            <a href="#quick-order" class="btn btn-primary btn-sm">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Специалист 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card specialist-card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Дмитрий Иванов" class="rounded-circle specialist-img mb-3">
+                            <h4 class="gradient-text">Дмитрий Иванов</h4>
+                            <h6 class="text-muted mb-3">Специалист по восстановлению данных</h6>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-2">4.9</span>
+                            </div>
+                            <p class="mb-4">Опыт работы: 10 лет. Восстанавливает данные с поврежденных HDD, SSD, флешек и других носителей.</p>
+                            <div class="skills mb-4">
+                                <span class="skill-badge">Восстановление данных</span>
+                                <span class="skill-badge">Ремонт HDD</span>
+                                <span class="skill-badge">RAID массивы</span>
+                                <span class="skill-badge">Фото восстановление</span>
+                            </div>
+                            <a href="#quick-order" class="btn btn-primary btn-sm">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Специалист 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card specialist-card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Ольга Кузнецова" class="rounded-circle specialist-img mb-3">
+                            <h4 class="gradient-text">Ольга Кузнецова</h4>
+                            <h6 class="text-muted mb-3">Вирусный аналитик</h6>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-2">4.8</span>
+                            </div>
+                            <p class="mb-4">Опыт работы: 7 лет. Удаляет сложные вирусы, трояны и шпионское ПО, восстанавливает систему после атак.</p>
+                            <div class="skills mb-4">
+                                <span class="skill-badge">Удаление вирусов</span>
+                                <span class="skill-badge">Защита данных</span>
+                                <span class="skill-badge">Восстановление ОС</span>
+                                <span class="skill-badge">Шифрование</span>
+                            </div>
+                            <a href="#quick-order" class="btn btn-primary btn-sm">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Специалист 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card specialist-card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Игорь Соколов" class="rounded-circle specialist-img mb-3">
+                            <h4 class="gradient-text">Игорь Соколов</h4>
+                            <h6 class="text-muted mb-3">Мастер по игровым системам</h6>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-2">4.9</span>
+                            </div>
+                            <p class="mb-4">Опыт работы: 6 лет. Собирает и настраивает игровые ПК, разгоняет компоненты, оптимизирует системы.</p>
+                            <div class="skills mb-4">
+                                <span class="skill-badge">Сборка ПК</span>
+                                <span class="skill-badge">Разгон</span>
+                                <span class="skill-badge">Охлаждение</span>
+                                <span class="skill-badge">Гейм-настройки</span>
+                            </div>
+                            <a href="#quick-order" class="btn btn-primary btn-sm">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Специалист 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card specialist-card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Анна Васнецова" class="rounded-circle specialist-img mb-3">
+                            <h4 class="gradient-text">Анна Васнецова</h4>
+                            <h6 class="text-muted mb-3">Специалист по Apple технике</h6>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-2">4.6</span>
+                            </div>
+                            <p class="mb-4">Опыт работы: 5 лет. Ремонтирует MacBook, iMac и другую технику Apple, использует оригинальные запчасти.</p>
+                            <div class="skills mb-4">
+                                <span class="skill-badge">Ремонт MacBook</span>
+                                <span class="skill-badge">Замена дисплеев</span>
+                                <span class="skill-badge">Ремонт iMac</span>
+                                <span class="skill-badge">Восстановление macOS</span>
+                            </div>
+                            <a href="#quick-order" class="btn btn-primary btn-sm">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма заявки -->
+    <section id="quick-order" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h2 class="text-center mb-4 gradient-text">Записаться к специалисту</h2>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Ваше имя</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">Телефон</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="specialist" class="form-label">Специалист</label>
+                                    <select class="form-select" id="specialist" required>
+                                        <option value="" selected disabled>Выберите специалиста</option>
+                                        <option>Алексей Петров (Ремонт ПК)</option>
+                                        <option>Елена Смирнова (Ноутбуки)</option>
+                                        <option>Дмитрий Иванов (Восстановление данных)</option>
+                                        <option>Ольга Кузнецова (Удаление вирусов)</option>
+                                        <option>Игорь Соколов (Игровые системы)</option>
+                                        <option>Анна Васнецова (Apple техника)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Опишите проблему</label>
+                                    <textarea class="form-control" id="message" rows="3"></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-4">Отправить заявку</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>TechService</h5>
+                    <p>Профессиональный ремонт компьютеров и ноутбуков с гарантией качества.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-vk fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-telegram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Меню</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Главная</a></li>
+                        <li><a href="#services" class="text-white">Услуги</a></li>
+                        <li><a href="#news" class="text-white">Новости</a></li>
+                        <li><a href="#about" class="text-white">О нас</a></li>
+                        <li><a href="#contacts" class="text-white">Контакты</a></li>
+                        <li><a href="otz.html" class="text-white">Отзывы</a></li>
+                        <li><a href="specialists.html" class="text-white">Специалисты</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Контакты</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> г. Москва, ул. Примерная, 123</li>
+                        <li class="mb-2"><i class="fas fa-phone-alt me-2"></i> +7 (123) 456-78-90</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@techservice.ru</li>
+                        <li><i class="fas fa-clock me-2"></i> Пн-Пт: 9:00 - 20:00</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 TechService. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Переключение темы
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeSwitcher = document.getElementById('themeSwitcher');
+            const html = document.documentElement;
+            
+            // Проверяем сохраненную тему
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-bs-theme', savedTheme);
+            
+            if (savedTheme === 'dark') {
+                themeSwitcher.innerHTML = '<i class="fas fa-sun me-1"></i>Светлая тема';
+                document.body.classList.add('dark-mode');
+            }
+            
+            // Обработчик переключения
+            themeSwitcher.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                html.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                if (newTheme === 'dark') {
+                    this.innerHTML = '<i class="fas fa-sun me-1"></i>Светлая тема';
+                    document.body.classList.add('dark-mode');
+                } else {
+                    this.innerHTML = '<i class="fas fa-moon me-1"></i>Темная тема';
+                    document.body.classList.remove('dark-mode');
+                }
+            });
+            
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

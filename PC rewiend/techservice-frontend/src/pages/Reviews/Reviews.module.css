@@ -1,0 +1,7 @@
+.reviewCard {
+  background-color: #f8f9fa;
+}
+.dark-mode .reviewCard {
+  background-color: #2c2c2c;
+  color: white;
+}

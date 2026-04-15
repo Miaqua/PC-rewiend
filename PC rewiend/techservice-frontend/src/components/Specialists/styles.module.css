@@ -1,0 +1,143 @@
+/* Обёртка всей секции */
+.wrapper {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.wrapper.dark {
+  background-color: #1e1b2e;
+  color: #e0e0e0;
+}
+
+/* Заголовок секции */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem;
+  background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  color: #6c757d;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.wrapper.dark .subtitle {
+  color: #b0b0b0;
+}
+
+/* Сетка карточек */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* Карточка специалиста */
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.1);
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.darkCard {
+  background-color: #2a2540;
+  color: #e0e0e0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+}
+
+/* Аватарка */
+.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #d8b4fe;
+  margin: 0 auto 1rem;
+}
+
+/* Имя */
+.name {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Должность */
+.position {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.darkCard .position {
+  color: #b0b0b0;
+}
+
+/* Биография */
+.bio {
+  margin-bottom: 1.5rem;
+  color: #495057;
+}
+
+.darkCard .bio {
+  color: #d0d0d0;
+}
+
+/* Загрузка */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.wrapper.dark .loading {
+  color: #b0b0b0;
+}
+
+/* Навыки */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.skillBadge {
+  background-color: #f3e8ff;
+  color: #5b21b6;
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.darkCard .skillBadge {
+  background-color: #4c1d95;
+  color: #d8b4fe;
+}
